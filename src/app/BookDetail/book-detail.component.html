@@ -1,0 +1,22 @@
+<div class="book-detail-page" [ngClass]="{'is-loading' : showLoader}" *ngIf="!isError">
+    <div class="breadscrum">
+        <a [routerLink]="['/books']">Books</a>
+        <i *ngIf='book !== undefined'><span class="serparate">/</span> {{ book.volumeInfo.title }}</i>
+    </div>
+    <div class="book-detail-wrapper" *ngIf='book !== undefined'>
+        <div class="col col-left">
+            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}" class="book-img"/>
+        </div>
+        <div class="col col-right">
+            <h1 class="title">{{ book.volumeInfo.title }}</h1>
+            <div class="more-detail publish-date">{{ book.volumeInfo.publishedDate }}</div>
+            <div class="more-detail publisher">{{ book.volumeInfo.publisher }}</div>
+            <div class="more-detail description">{{ book.volumeInfo.description }}</div>
+        </div>
+    </div>
+</div>
+
+ <div class="component-error" *ngIf="isError">
+    <div class="error-text">Something wrong happened, Click this button to try again!</div>
+    <button class="error-button" (click)="fetchData($event)">Try Again</button>
+</div>

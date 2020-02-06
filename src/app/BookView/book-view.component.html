@@ -1,0 +1,43 @@
+<div class="book-listing" [ngClass]="{'is-loading': showLoader}">
+    <div class="inner-listing" *ngIf="!isError">
+        <div class="toolbar">
+            <div class="toolbar-item sortby-wrapper">
+                <label for="sortby">Sort By</label>
+                <select id="sortby" (change)="handlerSort($event)">
+                    <option value=""></option>
+                    <option value="name-asc">Name Ascending</option>
+                    <option value="name-des">Name Descending</option>
+                    <option value="price-asc">Price Ascending</option>
+                    <option value="price-des">Price Descending</option>
+                </select>
+            </div>
+            <div class="toolbar-item filter-wrapper">
+                <label for="title">Title</label>
+                <input type="text" id="title" (keyup)="handlerFilter($event)" placeholder="Type something"/>
+            </div>
+        </div>
+        <ul class="book-lists">
+          <li *ngFor='let book of books' class="book-item">
+                <a [routerLink]="['/book', book.id]" class="book-link">
+                <figure>
+                    <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}" />
+                    <figcaption>
+                    <h1>{{ book.volumeInfo.title }}</h1>
+                    <span class="price" *ngIf="book.saleInfo.retailPrice">
+                        {{ book.saleInfo.retailPrice.amount | number }} {{ book.saleInfo.retailPrice.currencyCode }}
+                    </span>
+                    <span class="price" *ngIf="book.saleInfo.saleability == 'NOT_FOR_SALE'">
+                        NOT FOR SALE
+                    </span>
+                    </figcaption>
+                </figure>
+                <div class="extra-info">{{ book.volumeInfo.description }}</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="component-error" *ngIf="isError">
+        <div class="error-text">Something wrong happened, Click this button to try again!</div>
+        <button class="error-button" (click)="fetchData($event)">Try Again</button>
+    </div>
+</div>

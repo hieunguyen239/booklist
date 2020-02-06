@@ -1,0 +1,126 @@
+
+.book-listing {
+    &.is-loading {
+        @include loading;
+    }
+    .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0 20px 0;
+        border-bottom: 2px solid #cccccc;
+        padding: 7px 0 14px 0;
+        background-color: #efefef;
+    
+        .toolbar-item {
+    
+            + .toolbar-item {
+                margin-left: 25px;
+            }
+        }
+    
+        #title, #sortby {
+            border: 1px solid #efefef;
+            padding: 5px;
+            height: 30px;
+        }
+    
+        label {
+            font-weight: 700;
+            margin-right: 5px;
+            padding: 5px 0;
+            display: inline-block;
+        }
+    }
+    
+    .book-lists {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin-bottom: 50px;
+    
+        .book-item {
+            padding: 5px 10px;
+            margin: 2px;
+            width: calc(25% - 30px);
+            text-align: center;
+            border: 1px solid #efefef;
+            min-height: 350px;
+            position: relative;
+            overflow: hidden;
+    
+            .book-link {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+    
+                &:before {
+                    content: '';
+                    background: #efefef;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: -1;
+                    transform: translateY(100%);
+                    transition: all ease-in 0.3s;
+                }
+    
+                &:hover {
+                    &:before {
+                        transform: translateY(0);
+                    }
+    
+                    figure {
+                        visibility: hidden;
+                        display: block;
+                        width: 0;
+                        height: 0;
+                    }
+    
+                    .extra-info {
+                        display: -webkit-box;
+                    }
+                }
+    
+                .extra-info {
+                    display: none;
+                    color: #000;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 0px 20px;
+                }
+            }
+    
+            figure {
+                transition: all width 0.3s;
+                figcaption {
+                    h1 {
+                        font-size: 1rem;
+                        text-align: center;
+                        padding: 10px 0;
+                        color: $title-color;
+                    }
+                }
+            }
+    
+            @media screen and (max-width: 767px) {
+                width: calc(50% - 30px);
+            }
+        }
+    
+        .price {
+            color: $price-color;
+        }
+    }
+}
+

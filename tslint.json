@@ -1,0 +1,16 @@
+{
+  "extends": "tslint-config-airbnb",
+  "defaultSeverity": "error",
+  "rules": {
+    "ter-arrow-parens": [true, "always"],
+    "no-duplicate-variable": true,
+    "align": false,
+    "no-unused-variable": [
+      true
+    ],
+    "no-trailing-whitespace": true
+  },
+  "rulesDirectory": [
+    // "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

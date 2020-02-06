@@ -1,0 +1,15 @@
+.page-not-found-wrapper {
+    text-align: center;
+    .page-not-found-title {
+        font-size: 3rem;
+        color: #2f2f2f;
+    }
+    .text {
+        margin: 20px 0;
+        font-size: 2rem;
+        a {
+            text-decoration: underline;
+            color: red;
+        }
+    }
+}

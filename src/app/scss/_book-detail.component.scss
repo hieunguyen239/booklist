@@ -1,0 +1,35 @@
+.book-detail-page {
+    &.is-loading {
+        @include loading;
+    }
+    .book-detail-wrapper {
+        display: flex;
+
+        .col {
+            padding: 10px;
+
+            &.col-left {
+                width: 30%;
+                .book-img {
+                    border: 1px solid #efefef;
+                    padding: 5px;
+                }
+            }
+        }
+
+        .more-detail {
+            padding: 5px 0;
+        }
+
+        @media screen and (max-width: 767px){
+            flex-direction: column;
+            justify-content: center;
+            .col {
+                &.col-left {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
